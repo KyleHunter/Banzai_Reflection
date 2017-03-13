@@ -6,7 +6,7 @@
 *   Other wrappers only used within context manager classes
 """
 from Internal.Smart import *
-
+from Internal.Hooks import *
 
 class RefObject:
     def __init__(self, reference, hook):

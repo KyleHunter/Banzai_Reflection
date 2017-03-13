@@ -1,45 +1,22 @@
-from ctypes import *
+from Internal.Reflection import *
+from Core.Globals import *
 
 
-#  HELPERS
-def string_to_char_p(s):
-    return c_char_p(s.encode('utf-8'))
+def get_setting_array():
+    return [get_int_array(STATIC_OBJECT, Client_GameSettings, i) for i in range(0, 2000)]
 
 
-#  STRUCTS
-class SHMemData(Structure):
-    _fields_ = [("port", c_int), ("id", c_int), ("width", c_int), ("height", c_int), ("paired", c_bool),
-                ("imgoff", c_int), ("dbgoff", c_int), ("args", c_char * 4096)]
+def get_setting(setting):
+    return get_int_array(STATIC_OBJECT, Client_GameSettings, setting)
 
 
-class SMARTClient(Structure):
-    _fields_ = [("width", c_int), ("height", c_int), ("refcount", c_int), ("socket", c_int), ("fd", c_int),
-                ("memmap", c_void_p), ("data", POINTER(SHMemData))]
+def get_client_loop_cycle():
+    return get_int(STATIC_OBJECT, Client_LoopCycle)
 
 
-class RGBA(Structure):
-    _fields_ = [("b", c_ubyte), ("g", c_ubyte), ("r", c_ubyte), ("a", c_ubyte)]
+def get_base_x():
+    return get_int(STATIC_OBJECT, Client_BaseX)
 
 
-class RGB(Union):
-    _fields_ = [("rgba", RGBA), ("colour", c_int32)]
-
-
-class Point:
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
-
-
-class Size:
-    def __init__(self, width=0, height=0):
-        self.width = width
-        self.height = height
-
-
-def get_overflow(int_val):
-    temp = int_val & 0xffffffff
-    if temp == 0xffffffff:
-        return -1
-    else:
-        return temp
+def get_base_y():
+    return get_int(STATIC_OBJECT, Client_BaseY)
