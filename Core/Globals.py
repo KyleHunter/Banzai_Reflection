@@ -1,0 +1,3 @@
+
+
+STATIC_OBJECT = 0
