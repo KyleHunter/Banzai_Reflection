@@ -5,8 +5,7 @@
 *
 *   Other wrappers only used within context manager classes
 """
-from Smart import *
-from Misc import *
+from Internal.Smart import *
 
 
 class RefObject:

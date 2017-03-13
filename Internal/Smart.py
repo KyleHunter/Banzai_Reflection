@@ -10,7 +10,7 @@
 *   Global smart_instance is used throughout library as global smart object
 """
 
-from Misc import *
+from Misc.Misc import *
 import platform
 
 

@@ -1,4 +1,4 @@
-from Smart import *
+from Internal.Smart import *
 
 
 def init():
