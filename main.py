@@ -1,8 +1,8 @@
+"""
+*   main.py used as example script
+"""
 from Core.Renderable.Npcs import *
 import Banzai
-import time
-from Internal.Cache.CacheLoader import *
-import json
 
 Banzai.init()
 

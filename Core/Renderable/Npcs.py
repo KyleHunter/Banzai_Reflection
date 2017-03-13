@@ -1,6 +1,12 @@
+"""
+*   Npcs.py contains all methods unique to npcs
+*
+*   Pending changes
+"""
 from Core.Renderable.Actor import *
 from Internal.Cache.CacheLoader import cache
 from Internal.Reflection import *
+import re
 
 
 class Npcs(Actor):
@@ -25,7 +31,8 @@ class Npcs(Actor):
         for i in self._object_refs:
             smart_instance.free_object(smart_instance.target, i)
 
-    def get_indices(self):
+    @staticmethod
+    def get_indices():
         return [get_int_array(STATIC_OBJECT, Client_NpcIndices, i)
                 for i in range(0, get_int(0, Client_NpcIndices_Size))]
 
@@ -37,7 +44,6 @@ class Npcs(Actor):
         return temp
 
     def get_name(self):
-        import re
         temp = []
         for i in self.get_id():
             if re.search('%s(.*)%s' % ('"name": "', '",'), cache.npcs[i]) is None:

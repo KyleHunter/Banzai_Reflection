@@ -1,3 +1,8 @@
+"""
+*   Actor.py contains methods common to all actor classes
+*
+*   Actor should never be directly called, only extended into another class, i.e npcs
+"""
 from Internal.Reflection import *
 from Internal.Hooks import *
 from Core.Globals import *
