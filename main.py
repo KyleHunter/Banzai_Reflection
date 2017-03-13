@@ -7,6 +7,6 @@ import Banzai
 Banzai.init()
 
 with Npcs(name='Banker') as n:
-    pass
+    print(n.get_name())
 
 Banzai.terminate()

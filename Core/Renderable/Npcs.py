@@ -24,7 +24,7 @@ class Npcs(Actor):
                 h += 1
         self.results = [self._object_refs[t] for t in temp]
 
-    def __enter__(self, name='', id=-1, distance=-1):
+    def __enter__(self):
         return self
 
     def __exit__(self, type, value, traceback):
@@ -38,7 +38,7 @@ class Npcs(Actor):
 
     def get_id(self):
         temp = []
-        for obj in self._object_refs:
+        for obj in self.results:
             with RefObject(obj, Npc_Definition)as npc_def:
                 temp.append(get_int(npc_def.reference, NpcDefinition_ID))
         return temp
