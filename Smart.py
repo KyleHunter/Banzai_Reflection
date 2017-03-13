@@ -27,7 +27,6 @@ class Smart:
     #  EIOS
 
     def launch(self):
-        print(self.target)
         for i in range(0, self.get_clients(True)):
             self.target = self.pair_client(self.get_available_pid(i))
         if self.target == 0:

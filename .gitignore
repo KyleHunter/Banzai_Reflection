@@ -95,3 +95,7 @@ ENV/
 Plugins/
 
 \.idea/
+
+*.dll
+
+*.jar
