@@ -3,34 +3,33 @@
 *
 *   Actor should never be directly called, only extended into another class, i.e npcs
 """
-from Internal.Reflection import *
-from Internal.Hooks import *
-from Core.Globals import *
-from Misc.Misc import *
+import Misc.Misc as Misc
+import Internal.Reflection as Ref
+import Internal.Hooks as Hook
 
 
 class Actor:
     def get_spoken_text(self):
         temp = []
         for i in self.results:
-            temp.append(get_string(i, Actor_SpokenText))
+            temp.append(Misc.get_string(i, Hook.Actor_SpokenText))
         return temp
 
     def get_tile(self):
         temp = []
         for i in self.results:
-            temp.append(TPoint(round(get_base_x() + get_int(i, Actor_WorldX) /
-                                     128), round(get_base_y() + get_int(i, Actor_WorldY) / 128)))
+            temp.append(Misc.TPoint(round(Misc.get_base_x() + Ref.get_int(i, Hook.Actor_WorldX) /
+                                          128), round(Misc.get_base_y() + Ref.get_int(i, Hook.Actor_WorldY) / 128)))
         return temp
 
     def get_queue_size(self):
         temp = []
         for i in self.results:
-            temp.append(get_int(i, Actor_QueueSize))
+            temp.append(Ref.get_int(i, Hook.Actor_QueueSize))
         return temp
 
     def get_animation(self):
         temp = []
         for i in self.results:
-            temp.append(get_int(i, Actor_InteractingIndex))
+            temp.append(Ref.get_int(i, Hook.Actor_Animation))
         return temp

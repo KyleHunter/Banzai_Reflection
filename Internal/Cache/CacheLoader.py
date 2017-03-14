@@ -1,6 +1,3 @@
-import json
-
-
 class CacheLoader:
     def __init__(self):
         self.items, self.npcs, self.objects = [], [], []
