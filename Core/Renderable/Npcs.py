@@ -6,6 +6,7 @@
 from Core.Renderable.Actor import *
 from Internal.Cache.CacheLoader import cache
 from Internal.Reflection import *
+from Misc.Misc import *
 import re
 
 
@@ -46,8 +47,5 @@ class Npcs(Actor):
     def get_name(self):
         temp = []
         for i in self.get_id():
-            if re.search('%s(.*)%s' % ('"name": "', '",'), cache.npcs[i]) is None:
-                continue
-            temp.append(re.search('%s(.*)%s' % ('"name": "', '",'), cache.npcs[i]).group(1))
+            temp.append(get_cache_entry(i, 'name', 'npc'))
         return temp
-
